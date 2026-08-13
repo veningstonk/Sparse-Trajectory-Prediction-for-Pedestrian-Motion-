@@ -64,37 +64,6 @@ python scripts/evaluate.py \
 
 ---
 
-## Key Design Decisions (Reviewer-Driven)
-
-### R2-2 — Q-K-V Attention
-Raw 2D positions are *never* used as attention inputs. The pipeline is:
-
-```
-P_i(t) ∈ R^2  →  W_emb * P_i  →  h_i^(0) ∈ R^d_model   [Eq. 5a]
-h_i^(l)       →  W_Q * h_i,  W_K * h_j,  W_V * h_j       [Eq. 5b]
-alpha_ij = softmax( Q_i^T K_j / sqrt(d_k) )               [Eq. 5]
-h_i^att  = sum_j alpha_ij * V_j                            [Eq. 6]
-```
-
-### R2-3 — Hypothesis Selection
-Inference selects the best of K=20 hypotheses by argmin *over k*,
-not over time steps:
-
-```python
-k_star = dists.argmin(dim=1)      # (N,)  — over K hypotheses
-p_selected = p_all[arange(N), k_star]   # (N, H, 2)
-```
-
-### R2-1 — Mode Initialisation
-K-means runs on all training displacement sequences before epoch 1:
-
-```python
-trainer.initialise_modes()   # Algorithm 1, Steps 1-3
-trainer.train()              # Algorithm 1, Steps 5-26
-```
-
----
-
 ## Datasets
 
 Download and place under `data/raw/`:
