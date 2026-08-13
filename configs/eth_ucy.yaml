@@ -1,0 +1,28 @@
+# ETH-UCY Configuration — Table 2 hyperparameters
+# R2-4: T=8, H=12 enforced in data/dataset.py
+
+model:
+  d_model:      512    # hidden units in encoder/decoder (Table 2)
+  gnn_layers:   2      # social-level encoder layers (Table 2)
+  trans_layers: 3      # trajectory-level decoder layers (Table 2)
+  num_heads:    8      # attention heads (Table 2)
+  latent_dim:   64     # VAE latent space dimension (Table 2)
+  num_modes:    20     # K sparse motion modes (Table 2)
+  pred_len:     12     # H — prediction horizon (R2-4)
+  obs_len:      8      # T — observation horizon (R2-4)
+  delta:        2.0    # proximity threshold (metres) for GNN graph (Eq. 3)
+  dropout:      0.3    # dropout rate (Table 2)
+  lambda_sp:    0.1    # L1 sparsity regularisation weight (Table 2)
+
+trainer:
+  epochs:       100    # training epochs for ETH-UCY (Table 2)
+  lr:           0.001  # AdamW learning rate (Table 2)
+  weight_decay: 0.01   # AdamW weight decay (Table 2)
+  batch_size:   128    # mini-batch size (Table 2)
+  lambda_1:     1.0    # regression loss weight
+  lambda_2:     0.5    # classification loss weight (L_cls, Eq. 27)
+  lambda_3:     0.5    # neighbour loss weight
+  lambda_sp:    0.1    # sparsity loss weight
+  lambda_kl:    1.0    # KL divergence weight
+  ckpt_dir:     checkpoints/eth_ucy
+  log_dir:      runs/eth_ucy

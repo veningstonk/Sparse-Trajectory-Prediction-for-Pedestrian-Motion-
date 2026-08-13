@@ -1,0 +1,28 @@
+# Stanford Drone Dataset Configuration — Table 2
+# R2-4: SDD fixed half-split; 150 epochs due to higher complexity
+
+model:
+  d_model:      512
+  gnn_layers:   2
+  trans_layers: 3
+  num_heads:    8
+  latent_dim:   64
+  num_modes:    20
+  pred_len:     12
+  obs_len:      8
+  delta:        3.0    # larger proximity threshold for aerial-view SDD
+  dropout:      0.3
+  lambda_sp:    0.1
+
+trainer:
+  epochs:       150    # 150 epochs for SDD (Table 2 — higher complexity)
+  lr:           0.001
+  weight_decay: 0.01
+  batch_size:   256    # larger batch for SDD (Table 2)
+  lambda_1:     1.0
+  lambda_2:     0.5
+  lambda_3:     0.5
+  lambda_sp:    0.1
+  lambda_kl:    1.0
+  ckpt_dir:     checkpoints/sdd
+  log_dir:      runs/sdd
