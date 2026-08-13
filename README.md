@@ -6,40 +6,6 @@ pedestrian trajectory prediction.
 
 ---
 
-## Reviewer Compliance Index
-
-Every reviewer comment addressed in the revision is reflected directly
-in the code. The table below maps each comment to the implementing file
-and the specific functions/classes involved.
-
-| Comment | File | Symbol |
-|---------|------|--------|
-| **R1-1** Architectural novelty vs Trajectron++/AgentFormer | `models/stp.py` | `STPModel` docstring; `models/baselines/trajectronpp.py` inline comment |
-| **R1-2** Comparison with motion primitive methods | `models/baselines/sgcn.py` | `SGCN`; `evaluation/metrics.py`; `scripts/evaluate.py` |
-| **R1-3** Social-STGMLP added | `models/baselines/social_stgmlp.py` | `SocialSTGMLP` |
-| **R1-3** D-STGCN added | `models/baselines/d_stgcn.py` | `DSTGCN` |
-| **R2-1** Mode initialisation (K-means) | `models/early_sparsity.py` | `EarlySparsityModule.initialise_modes_kmeans` |
-| **R2-1** Algorithm 1 (joint training) | `training/trainer.py` | `STPTrainer.train_one_epoch` |
-| **R2-1** Algorithm 2 (inference) | `models/stp.py` | `STPModel.predict`; `models/early_sparsity.py` `EarlySparsityModule.infer` |
-| **R2-2** Q-K-V attention (not raw positions) | `models/gnn.py` | `MultiHeadLocalAttention`, `PositionEmbedding` |
-| **R2-2** Eq. 5a position embedding | `models/gnn.py` | `PositionEmbedding` |
-| **R2-2** Eq. 23 self-dot-product fix | `models/gnn.py` | `MultiHeadLocalAttention.forward` |
-| **R2-3** argmin over hypotheses (Eq. 31) | `models/stp.py` | `STPModel.predict` (k_star selection); `evaluation/metrics.py` `min_ade_k` |
-| **R2-3** minADE@K / minFDE@K metrics | `evaluation/metrics.py` | `min_ade_k`, `min_fde_k` |
-| **R2-4** ETH-UCY leave-one-scene-out | `data/dataset.py` | `load_eth_ucy_fold`; `scripts/evaluate.py` `run_eth_ucy_loso` |
-| **R2-4** SDD fixed half-split | `data/dataset.py` | `load_sdd` |
-| **R2-4** T=8, H=12 | `data/dataset.py` | `OBS_LEN=8`, `PRED_LEN=12` |
-| **R2-4** Coordinate normalisation | `data/dataset.py` | `Normalizer` |
-| **R2-4** 3 random seeds, mean±std | `training/trainer.py` | `run_with_seeds`; `set_seed` |
-| **R2-4** Baseline result sourcing note | `scripts/evaluate.py` | Table 6 footer comment |
-| **R2-5** NLL calibration metric | `evaluation/metrics.py` | `negative_log_likelihood` |
-| **R2-5** ECE calibration metric | `evaluation/metrics.py` | `expected_calibration_error` |
-| **Internal** Eq. 29 L_ds → L_cls | `training/losses.py` | `total_loss` comment |
-| **Internal** Neighbour loss conditioned on N_i | `training/losses.py` | `neighbour_loss(adj=...)` |
-| **Internal** VAE decoder f_decoder(z) not z directly | `models/vae.py` | `VAEDecoder.forward` |
-
----
-
 ## Project Structure
 
 ```
