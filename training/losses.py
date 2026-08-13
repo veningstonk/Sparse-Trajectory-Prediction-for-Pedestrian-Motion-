@@ -3,20 +3,7 @@ training/losses.py
 ------------------
 All STP loss components.
 
-Reviewer compliance:
-  Internal fix: Eq. 29 used undefined term L_ds.  This file uses L_cls
-  (Eq. 27) consistently throughout.  L_ds does NOT appear anywhere.
-  Internal fix: Neighbour loss (Eq. 28) now conditioned on j ∈ N_i(t)
-  via the adjacency mask — preventing penalisation of all pedestrian pairs.
 
-Equations implemented:
-  26  — L_reg    : regression loss (MSE between prediction and ground truth)
-  27  — L_cls    : classification loss (cross-entropy over mode assignment)
-  28  — L_nei    : neighbour prediction loss (consistency between neighbours)
-  10  — L_sparse : L1 sparsity regularisation on mode coefficients
-  17  — L_KL     : KL divergence (from VAE)
-  29  — L_total  = lambda_1*L_reg + lambda_2*L_cls + lambda_3*L_nei
-                   + lambda*L_sparse + lambda_KL*L_KL
 """
 
 import torch

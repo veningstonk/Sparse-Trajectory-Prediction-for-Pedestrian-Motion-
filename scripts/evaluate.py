@@ -3,14 +3,7 @@ scripts/evaluate.py
 -------------------
 Full evaluation pipeline: STP + all baselines on ETH-UCY and SDD.
 
-Reviewer compliance:
-  R2-4 : ETH-UCY leave-one-scene-out — 5 folds, results averaged.
-          SDD fixed half-split.
-          T=8, H=12 enforced via dataset loader.
-          3 random seeds; mean ± std reported.
-  R2-3 : minADE@20 / minFDE@20 reported for all probabilistic models.
-  R2-5 : NLL and ECE reported for STP and probabilistic baselines.
-  R1-3 : Social-STGMLP and D-STGCN included in Table 6.
+
 """
 
 import argparse

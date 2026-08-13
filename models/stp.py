@@ -3,17 +3,6 @@ models/stp.py
 -------------
 Sparse Trajectory Prediction (STP) — main model.
 
-Reviewer compliance:
-  R1-1 : Architectural novelty paragraph — the three components interact as:
-          GNN (social context h_i) → Transformer (temporal features f_i)
-          → [ESO coefficient net + VAE encoder] (both conditioned on h_i + f_i)
-          The Transformer receives GNN hidden states, not raw positions, so
-          self-attention scores carry social context.  ESO applies sparsity
-          at the decoding stage; VAE samples only lightweight residuals.
-  R2-1 : Complete data flow matching Algorithm 1 (training) and
-          Algorithm 2 (inference).
-  R2-3 : Inference hypothesis selection uses argmin over K hypotheses
-          (Eq. 31), NOT over time steps.
 """
 
 import torch

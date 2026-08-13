@@ -3,27 +3,7 @@ models/vae.py
 -------------
 Variational Autoencoder for multimodal trajectory prediction.
 
-Reviewer compliance:
-  R1-1 : VAE decoder applies a LEARNED nonlinear transformation f_decoder(z)
-          to map the latent variable z to the output space.  The original
-          manuscript wrote p(p_hat | z) = N(p_hat; z, sigma^2), making z
-          directly the output mean — bypassing any learned decoding.
-          This implementation corrects that: output = f_decoder(z) where
-          f_decoder is a multi-layer MLP (Eq. 15).
-  R2-1 : VAE encoder and decoder are jointly trained with GNN, Transformer,
-          and ESO via Algorithm 1 (training/trainer.py).
-  R2-5 : The encoder outputs (mu, log_var) are used for NLL and ECE
-          calibration metrics in evaluation/metrics.py.
 
-Equations implemented:
-  11  — posterior:  q(z | P_obs) = N(mu(P_obs), sigma^2(P_obs))
-  12  — encoder:    mu, sigma = f_mu(P_obs), f_sigma(P_obs)
-  13  — reparameterisation: z = mu + sigma * epsilon, epsilon ~ N(0,I)
-  14  — decoder distribution (corrected): p(p_hat | z) = N(f_decoder(z), sigma^2)
-  15  — decoder: p_hat_i(t) = f_decoder(z)
-  16  — reconstruction loss
-  17  — KL divergence loss
-  18  — total VAE loss
 """
 
 import torch

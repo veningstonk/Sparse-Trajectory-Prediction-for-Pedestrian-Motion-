@@ -3,17 +3,7 @@ training/trainer.py
 -------------------
 STP training loop — implements Algorithm 1 from the manuscript.
 
-Reviewer compliance:
-  R2-1 : Implements Algorithm 1 in full:
-          Steps 1-3  — K-means mode initialisation before epoch 1.
-          Steps 5-26 — training loop over epochs and mini-batches,
-                       including all five loss terms.
-          Step 23    — backpropagation via reparameterisation trick
-                       (handled automatically by PyTorch autograd since
-                        z = mu + sigma * epsilon uses no stop_gradient).
-          Step 24    — AdamW parameter update (Table 2).
-  R2-4 : random_seeds list; results are averaged across seeds.
-          Each seed controls: weight init, VAE sampling, mini-batch order.
+
 """
 
 import os

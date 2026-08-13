@@ -1,11 +1,6 @@
 """
 SGCN — Sparse Graph Convolution Network (Shi et al., CVPR 2021).
 
-R1-2: Included as interaction-stage sparsity baseline.
-      SGCN reduces O(N^2) attention cost by building a sparse directed
-      graph during ENCODING.  Key limitation: dense decoding still
-      requires K separate forward passes, unlike STP's single-pass ESO.
-
 Reference:
   Shi, L., Wang, L., Long, C., Zhou, S., Zhou, M., Niu, Z., & Hua, G.
   (2021). SGCN: Sparse graph convolution network for pedestrian trajectory

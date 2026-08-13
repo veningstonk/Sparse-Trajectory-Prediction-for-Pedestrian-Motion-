@@ -3,28 +3,6 @@ models/early_sparsity.py
 -------------------------
 Early Sparsity Optimisation (ESO) module.
 
-Reviewer compliance:
-  R2-1 : Full specification of mode initialisation, coefficient network,
-          and training/inference procedures as requested.
-          - Mode initialisation: K-means on training displacement sequences
-            (Algorithm 1, Steps 1-3).
-          - Joint training with GNN, Transformer, VAE via unified loss
-            (Algorithm 1, Steps 14-22).
-          - Inference: single forward pass + sparse thresholding
-            (Algorithm 2, Steps 4-6).
-  R1-2 : Context-adaptive coefficients alpha_ik(t) conditioned on the
-          pedestrian's social context h_i^(L)(t) from the GNN — NOT
-          scene-agnostic fixed anchors (vs Multipath++).
-          ESO introduces sparsity at the DECODING stage, complementary
-          to interaction-stage sparsity methods like SGCN.
-  R1-1 : Mode library M* is pre-computed at training time; inference
-          requires only a single weighted sum (Eq. 9) plus lightweight
-          VAE residuals — source of 0.02s/pedestrian speed.
-
-Equations implemented:
-  9a  — coefficient network: alpha_i(t) = f_coeff([h_i^(L)(t) || f_i(t)])
-  9   — sparse trajectory:   p_hat_i^sparse(t) = sum_k alpha_ik(t) * m_k
-  10  — ESO loss:            L_sparse = sum_i sum_k ||alpha_ik(t)||_1
 """
 
 import torch

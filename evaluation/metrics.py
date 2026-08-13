@@ -3,21 +3,7 @@ evaluation/metrics.py
 ---------------------
 All evaluation metrics for trajectory prediction.
 
-Reviewer compliance:
-  R2-3 : minADE@K and minFDE@K use oracle selection over K HYPOTHESES
-          (Eq. 31c), not over time steps.
-  R2-4 : Mean ADE/FDE use deployment-time model-selected hypothesis (Eq. 31).
-          All metrics documented with units (metres) and K=20 default.
-  R2-5 : Negative Log-Likelihood (NLL) and Expected Calibration Error (ECE)
-          evaluate VAE uncertainty calibration (Eqs. 36-37).
 
-Equations implemented:
-  32  — ADE  (deployment: model-selected hypothesis)
-  33  — FDE  (deployment: model-selected hypothesis)
-  36  — minADE@K (oracle best-of-K)
-  37  — minFDE@K (oracle best-of-K)
-  36* — NLL  (negative log-likelihood of Gaussian prediction)
-  37* — ECE  (expected calibration error via 1-sigma coverage)
 """
 
 import math

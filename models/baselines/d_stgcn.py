@@ -1,12 +1,6 @@
 """
 D-STGCN (Sighencea et al., Electronics 2023).
 
-R1-3: Added per Reviewer 1 explicit request. This baseline was cited in
-      the paper's own introduction as ref [10] but was absent from Table 6.
-      D-STGCN uses a dynamic spatio-temporal graph convolutional network
-      that adapts graph topology across time steps to model non-stationary
-      pedestrian interactions.
-
 Reference:
   Sighencea, B.I., Stanciu, I.R., & Căleanu, C.D. (2023). D-STGCN:
   Dynamic Pedestrian Trajectory Prediction Using Spatio-Temporal Graph

@@ -3,13 +3,6 @@ models/transformer.py
 ---------------------
 Transformer temporal encoder for sequential trajectory modelling.
 
-Reviewer compliance:
-  R1-1 : Operates on hidden state vectors h_i^(L)(t) produced by the GNN
-          social encoder, NOT on raw positions.  This means self-attention
-          scores already carry social context from prior message-passing.
-  R2-2 : Input to transformer is always a learned representation (GNN output),
-          never raw 2D coordinates — maintaining the Q-K-V correctness
-          requirement throughout the full pipeline.
 """
 
 import math

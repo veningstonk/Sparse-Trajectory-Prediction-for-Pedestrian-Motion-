@@ -1,13 +1,6 @@
 """
 Trajectron++ (Salzmann et al., ECCV 2020).
 
-R1-1: Key baseline for architectural novelty comparison.
-      Trajectron++ combines GNN + CVAE (similar components to STP) but:
-      - Uses LSTM recurrent encoders (not Transformers) → cannot capture
-        long-range temporal dependencies as efficiently.
-      - Dense O(N^2) pairwise attention.
-      - No inference-time sparsity: K samples each require a full CVAE
-        forward pass.
 """
 import torch
 import torch.nn as nn

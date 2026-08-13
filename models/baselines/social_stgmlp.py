@@ -1,12 +1,6 @@
 """
 Social-STGMLP (Meng et al., Information 2024).
 
-R1-3: Added per Reviewer 1 explicit request. This baseline was cited in
-      the paper's own introduction as ref [9] but was absent from Table 6.
-      Social-STGMLP replaces the attention-heavy graph transformer with a
-      lightweight MLP over spatiotemporal graph features, achieving
-      competitive accuracy at reduced computational cost.
-
 Reference:
   Meng, D., Zhao, G., & Yan, F. (2024). Social-STGMLP: A Social
   Spatio-Temporal Graph Multi-Layer Perceptron for Pedestrian Trajectory

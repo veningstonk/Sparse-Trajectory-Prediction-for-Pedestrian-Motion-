@@ -3,21 +3,6 @@ models/gnn.py
 -------------
 Graph Neural Network social encoder with learned Q-K-V attention.
 
-Reviewer compliance:
-  R2-2 : Attention scores are computed from LEARNED query/key projections
-          of hidden state vectors — NOT from raw 2D positions.
-          Equations implemented:
-            5a  — position embedding: h_i^(0) = W_emb * P_i + b_emb
-            5b  — Q-K-V projections: Q=W_Q*h, K=W_K*h, V=W_V*h
-            5   — scaled dot-product: alpha_ij = softmax(Q_i^T K_j / sqrt(d_k))
-            6   — value aggregation:  h_i^att = sum_j alpha_ij * V_j
-            6a  — per-head output
-            6b  — multi-head concat + output projection W_O
-            7   — message passing:   h_i^(t+1) = sigma(W * h_i^att + b)
-            8   — multi-layer stacking
-  R1-1 : Locality constraint — attention restricted to N_i(t) defined by
-          proximity threshold delta, reducing O(N^2) to O(N*|N_i|).
-  R2-4 : delta is a configurable hyperparameter documented in configs.
 """
 
 import math
